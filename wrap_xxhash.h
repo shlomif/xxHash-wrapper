@@ -10,7 +10,6 @@
 // wrap_xxhash.h
 #pragma once
 
-#include "config.h"
 #define XXH_PRIVATE_API
 #include "xxhash.h"
 
