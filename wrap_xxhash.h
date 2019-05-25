@@ -11,10 +11,12 @@
 #pragma once
 
 #define XXH_PRIVATE_API
-#include "xxhash.h"
+#define XXH_STATIC_LINKING_ONLY
+// #include "xxhash.h"
+#include "xxh3.h"
 
 #if SIZEOF_VOID_P == 4
 #define DO_XXH(b, l) XXH32((b), (l), 0)
 #else
-#define DO_XXH(b, l) XXH64((b), (l), 0)
+#define DO_XXH(b, l) XXH3_64bits((b), (l))
 #endif
