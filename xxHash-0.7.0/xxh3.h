@@ -47,7 +47,9 @@
 #define XXH_INLINE_ALL
 #include "xxhash.h"
 
+#ifndef NDEBUG
 #define NDEBUG
+#endif
 #include <assert.h>
 
 
