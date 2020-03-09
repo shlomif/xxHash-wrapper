@@ -8,6 +8,7 @@
 // wrap_xxhash.h
 #pragma once
 
+#define XXH_INLINE_ALL
 #define XXH_PRIVATE_API
 #define XXH_STATIC_LINKING_ONLY
 // #include "xxhash.h"
