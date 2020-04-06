@@ -399,6 +399,8 @@ XXH32_finalize(xxh_u32 h32, const xxh_u8* ptr, size_t len, XXH_alignment align)
         }
         return XXH32_avalanche(h32);
     } else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
          switch(len&15) /* or switch(bEnd - p) */ {
            case 12:      PROCESS4;
                          /* fallthrough */
@@ -438,6 +440,7 @@ XXH32_finalize(xxh_u32 h32, const xxh_u8* ptr, size_t len, XXH_alignment align)
                          /* fallthrough */
            case 0:       return XXH32_avalanche(h32);
         }
+#pragma GCC diagnostic pop
         XXH_ASSERT(0);
         return h32;   /* reaching this point is deemed impossible */
     }
@@ -814,6 +817,8 @@ XXH64_finalize(xxh_u64 h64, const xxh_u8* ptr, size_t len, XXH_alignment align)
         }
          return  XXH64_avalanche(h64);
     } else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wimplicit-fallthrough"
         switch(len & 31) {
            case 24: PROCESS8_64;
                          /* fallthrough */
@@ -895,6 +900,7 @@ XXH64_finalize(xxh_u64 h64, const xxh_u8* ptr, size_t len, XXH_alignment align)
                          /* fallthrough */
            case  0: return XXH64_avalanche(h64);
         }
+#pragma GCC diagnostic pop
     }
     /* impossible to reach */
     XXH_ASSERT(0);
